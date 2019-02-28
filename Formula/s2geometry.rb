@@ -28,6 +28,7 @@ class S2geometry < Formula
     mkdir "build" do
       args = std_cmake_args
       args << "-DWITH_GLOG=1"
+      args << "-DBUILD_SHARED_LIBS=OFF"
       args << "-DCMAKE_OSX_SYSROOT=/" unless MacOS::Xcode.installed?
       args << ".."
       system "cmake", "-G", "Unix Makefiles", *args
