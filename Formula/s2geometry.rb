@@ -4,7 +4,7 @@ class S2geometry < Formula
   url "https://github.com/google/s2geometry/archive/v0.9.0-2019.02.11.00.tar.gz"
   version "0.9.0-2019.02.11.00"
   sha256 "226315d1b720c12e9209c21f084f0570a069a02bea624886b69816291506edff"
-  revision 1
+  revision 2
 
   depends_on "cmake" => :build
   depends_on "glog" => :build
@@ -34,6 +34,15 @@ class S2geometry < Formula
       args << ".."
       system "cmake", "-G", "Unix Makefiles", *args
       system "make", "install"
+    end
+    mkdir "build-shared" do
+      args = std_cmake_args
+      args << "-DWITH_GLOG=1"
+      args << "-DCMAKE_OSX_SYSROOT=/" unless MacOS::Xcode.installed?
+      args << ".."
+      system "cmake", "-G", "Unix Makefiles", *args
+      system "make", "s2"
+      lib.install "libs2.dylib"
     end
   end
 
