@@ -4,7 +4,7 @@ class S2geometry < Formula
   url "https://github.com/google/s2geometry/archive/v0.9.0.tar.gz"
   version "0.9.0"
   sha256 "54c09b653f68929e8929bffa60ea568e26f3b4a51e1b1734f5c3c037f1d89062"
-  revision 3
+  revision 4
 
   depends_on "cmake" => :build
   depends_on "glog" => :build
