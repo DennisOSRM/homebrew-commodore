@@ -31,6 +31,7 @@ class S2geometry < Formula
       args << "-DWITH_GLOG=1"
       args << "-DBUILD_SHARED_LIBS=OFF"
       args << "-DOPENSSL_USE_STATIC_LIBS=TRUE"
+      args << "-DCMAKE_BUILD_TYPE=Release"
       args << "-DCMAKE_OSX_SYSROOT=/" unless MacOS::Xcode.installed?
       args << ".."
       system "cmake", "-G", "Unix Makefiles", *args
@@ -38,6 +39,7 @@ class S2geometry < Formula
     end
     mkdir "build-shared" do
       args = std_cmake_args
+      args << "-DCMAKE_BUILD_TYPE=Release"
       args << "-DWITH_GLOG=1"
       args << "-DCMAKE_OSX_SYSROOT=/" unless MacOS::Xcode.installed?
       args << ".."
